@@ -1,17 +1,28 @@
-from cgitb import text
 import kivy.app as app
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.core.window import Window
 
- 
+Window.size = (414, 736)
+
+class Main(Screen):
+    def ChangeWindow(self,*args):
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'Costs'
+
+class Costs(Screen):
+    pass
+
 class MoneyCounterApp(app.App):
+    
     def build(self):
-        bl = BoxLayout()
-        btn1 = Button(text = 'Hello')
-        btn2 = Button(text = 'Something')
-        bl.add_widget(btn1)
-        bl.add_widget(btn2)
-        return bl
+        sm = ScreenManager()
+        sm.add_widget(Main(name='Main'))
+        sm.add_widget(Costs(name='Costs'))
+        return sm
+
+
 
 if __name__ == "__main__":
     MoneyCounterApp().run()
