@@ -3,61 +3,61 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
-from kivy.uix.gridlayout import GridLayout as gl
-from kivy.uix.label import Label
 
 Window.size = (414, 736)
 
-class Main(Screen):
-    balance = 100
+'''class Main(Screen):
+    Username = 'Max'
+    Currency = '$'
+    CurrentCurrency = 'Цены указаны в '+ Currency
+    Perriod = 'March'
+    Balance = '50000'
+    op1 = 'Бутылка молока'
+    c1 = '-50 р'
+    '''
     
-    def get_balance(self):
-        return self.balance 
-        
-    def ChangeWindow(self,*args):
-        self.manager.transition.direction = 'left'
-        self.manager.current = 'Costs'
+
+class Balance(Screen):
+    pass
+
+class Op_Menu(Screen):
+    #cur = 'р'
+    #с1 = '-50' + cur
+    #op = 'Бутылка молока' + с1
+    pass
+
+class Extra(Screen):
+    pass
+
+class AllOp(Screen):
+    pass
 
 class Costs(Screen):
     pass
 
+class Operation_Change(Screen):
+    pass
+
+class Add_New_Op(Screen):
+    pass
+
+class Op_Menu(Screen):
+    pass
+
 class MoneyCounterApp(app.App):
     
-    def callback(self, instance):
-        print('The button <%s> is being pressed' % instance.text)
-
-
     def build(self):
-        btn1 = Button(text='Hello world 1')
-        btn1.bind(on_press = self.callback)
-        btn2 = Button(text='Hello world 2')
-        btn2.bind(on_press = self.callback)
-        buts = BoxLayout()
-        buts.add_widget(btn1)
-        buts.add_widget(btn2)
-        return buts
-    
-    
-    #def build(self):
-        #mybut = Button(text = "hello", font_size = 30, background_color = "yellow", on_press = self.click)
-        #sm = ScreenManager()
-        #sm.add_widget(Main(name='Main'))
-        #sm.add_widget(Costs(name='Costs'))
-        #sm.add_widget(mybut)
-        #return sm
+        sm = ScreenManager()
+        #sm.add_widget(Balance(name='Balance'))
+        #sm.add_widget(Op_Menu(name='Op_Menu'))
+        #sm.add_widget(Operation_Change(name='Operation_Change'))
+        sm.add_widget(Add_New_Op(name='Add_New_Op'))
+        sm.add_widget(AllOp(name='AllOp'))
+        sm.add_widget(Extra(name='Extra'))
+        sm.add_widget(Costs(name='Costs'))
+        return sm
 
 
-    #def bebra(self):
-        #buts = BoxLayout()
-        #grid = gl(cols = 1)
-
-        #mybut = Button(text = "hello", font_size = 30, background_color = "yellow", on_press = self.click)
-        #mybut2 = Button(text = "bye", font_size = 30, background_color = "red")
-        #self.label = Label(text = "XD", font_size = 30)
-        #buts.add_widget(mybut)
-        #buts.add_widget(mybut2)
-        #grid.add_widget(buts)
-        #grid.add_widget(self.label)
 
 if __name__ == "__main__":
     MoneyCounterApp().run()
