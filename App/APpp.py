@@ -8,14 +8,11 @@ from kivy.core.window import Window
 Window.size = (414, 736)
 
 class Main(Screen):
-    balance = 100
-    
-    def get_balance(self):
-        return self.balance 
-        
-    def ChangeWindow(self,*args):
-        self.manager.transition.direction = 'left'
-        self.manager.current = 'Costs'
+    Username = 'Max'
+    Currency = '$'
+    Perriod = 'March'
+    Balance = 50000
+    StrBalance = str(Balance)
 
 class Costs(Screen):
     pass

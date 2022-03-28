@@ -1,16 +1,102 @@
-<Main>:
-    BoxLayout:
-        BoxLayout:
-            
-            Label:
-                text: 'jgj'
-            Image:
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
 
-            Label:
-                text: 'khjk'
-        BoxLayout:
-            Label:
-                text: 'jhgfi'
     
-             
+        
+<Main>:
+    ScrollView:
+        do_scroll_y: True
+        size: self.size
+        GridLayout:
+            spacing: 20
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height 
+            padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+            BoxLayout:
+                
+                size_hint_y: None
+                height: 60
+                
+                BoxLayout:
+                    size_hint:None,None
+                    spacing: 5
+                    Image:
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout:
+                    size_hint:None,None 
+                    spacing: 5                   
+                    MainLabelGray:
+                        text: root.Username
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout: 
+                    size_hint:None,None
+                    spacing: 5             
+                    MainButtonGray:
+                        text: 'Текущая валюта' + root.Currency
+                        size_hint: None,None
+                        size: root.width*0.47,50
+                                         
+            BoxLayout:
+                size_hint_y: None
+                orientaeion: 'vertical'
+                height:40
+                padding: 
+                
+                
+                TextInput:
+                    size_hint: None,None
+                    width: root.width*0.9
+                    height: 38
+                
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                spacing: 10
+                MainButtonGray:
+                    text: 'Доходы за ' + root.Perriod
+                    
+                MainButtonGray:
+                    text: 'Расходы за ' + root.Perriod
+                    on_press:
+                        print('hi')
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                MainLabelGray:
+                    text: 'Текущий баланс :' + root.Currency
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                spacing: 10
+                MainLabelGray:
+                
+                    text: 'Последние операции'
+                    
+                MainLabelGray:
+                    
+                    text: 'Все операции'
+                    
+            BoxLayout:
+                size_hint_y: None
+                orientation: 'vertical'
+                size_y: 50
+                spacing: 10
+                BoxLayout:
+                    MainLabelGray:
+                        text: 'Молоко'
 
+                    MainLabelGray:
+                        text: '50 r'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: None
+        size_y: 40
+        padding: 20
+        MainButtonYellow:
+            text: 'hh'
