@@ -1,0 +1,76 @@
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
+<AllTransactions>:
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+            size_hint_y: None
+            height: 50
+            padding: 20
+            BoxLayout:
+                Button:
+                    background_color: 'black'
+                    text: 'На главную <'
+                    on_press: 
+                Label:
+                    text: 'Все операции'
+        ScrollView:
+            do_scroll_y: True
+            size: self.size
+            GridLayout:
+                spacing: 30
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height 
+                padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+                SearchGray:
+                BoxLayout:
+                    size_hint_y:None
+                    size_y:30     
+                    Label:
+                        text: 'Сортировать по:'
+                    Label:
+                        text: 'Дате <' #тут надо сделать стрелочку вниз и выпадающий список
+                    Label:
+                        text: 'Категории <' #тут надо сделать стрелочку вниз и выпадающий список
+                BoxLayout:
+                    orientaeion: 'vertical' 
+                    spacing: 20 
+                    BoxLayout:
+                        size_hint_y:None
+                        size_y:20 
+                        Label:
+                            text: 'date'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            size_hint_y: None
+                            size_y: 30
+                            LabelGray:
+                                
+                                text: 'Молоко'
+
+                            LabelGray:
+                                
+                                text: '50 r'
+                        BoxLayout:
+                            
+                            LabelGray:
+                                text: 'Молоко'
+
+                            LabelGray:
+                                text: '50 r'
+                        BoxLayout:
+                            
+                            LabelGray:
+                                text: 'Молоко'
+
+                            LabelGray:
+                                text: '50 r'
+                
+                
+
+                    

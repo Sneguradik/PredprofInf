@@ -1,4 +1,4 @@
-<MainButtonGray@Button>:
+<ButtonGray@Button>:
     background_color: 0,0,0,0
     canvas.before:
         Color:
@@ -7,8 +7,9 @@
             size: self.size
             pos: self.pos
             radius: [20]
-<MainButtonYellow@Button>:
+<ButtonYellow@Button>:
     background_color: 0,0,0,0
+    
     canvas.before:
         Color:
             rgb: C('#FFC700')         
@@ -16,7 +17,7 @@
             size: self.size
             pos: self.pos
             radius: [20]
-<MainLabelGray@Label>:
+<LabelGray@Label>:
     background_color: 0,0,0,0
     canvas.before:
         Color:
@@ -25,3 +26,18 @@
             size: self.size
             pos: self.pos
             radius: [20]            
+
+<SearchGray@BoxLayout>:
+    height:38
+    size_hint_y:None
+    spacing:10
+    TextInput:
+        size_hint_x:0.8
+        background_color: (0.33, 0.33, 0.33, 1)
+        color:(1,1,1,1)
+        multiline:False 
+    ButtonGray:
+        size_hint_x:0.2
+        text:'Найти'
+
+    

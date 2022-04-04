@@ -1,0 +1,15 @@
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
+<AddTransaction>:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        BoxLayout:
+            Button:
+                background_color: 'black'
+                text: 'На главную <'
+                on_press: 
+            Label:
+                text: 'Все операции'
+        BoxLayout:
+

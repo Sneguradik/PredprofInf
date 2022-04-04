@@ -1,0 +1,89 @@
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
+<Main>:
+    ScrollView:
+        do_scroll_y: True
+        size: self.size
+        GridLayout:
+            spacing: 20
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height 
+            padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+            BoxLayout:
+                
+                size_hint_y: None
+                height: 60
+                
+                BoxLayout:
+                    size_hint:None,None
+                    spacing: 5
+                    Image:
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout:
+                    size_hint:None,None 
+                    spacing: 5                   
+                    LabelGray:
+                        text: root.Username
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout: 
+                    size_hint:None,None
+                    spacing: 5             
+                    ButtonGray:
+                        text: 'Текущая валюта' + root.Currency
+                        size_hint: None,None
+                        size: root.width*0.47,50
+                                         
+            SearchGray:
+
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                spacing: 10
+                ButtonGray:
+                    text: 'Доходы за ' + root.Perriod
+                    
+                ButtonGray:
+                    text: 'Расходы за ' + root.Perriod
+                    on_press:
+                        print('hi')
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                LabelGray:
+                    text: 'Текущий баланс :' + root.Currency
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                spacing: 10
+                LabelGray:
+                
+                    text: 'Последние операции'
+                    
+                LabelGray:
+                    
+                    text: 'Все операции'
+                    
+            BoxLayout:
+                size_hint_y: None
+                orientation: 'vertical'
+                size_y: 50
+                spacing: 10
+                BoxLayout:
+                    LabelGray:
+                        text: 'Молоко'
+
+                    LabelGray:
+                        text: '50 r'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: None
+        size_y: 40
+        padding: 20
+        ButtonYellow:
+            text: 'Новая транзакция'
