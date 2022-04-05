@@ -9,7 +9,13 @@ def predict_costs(file):
     # получение данных из sql и их запись в csv
     con = sqlite3.connect('db.db')
     cursor = con.cursor()
-    query = ''
+    query = '''SELECT amount,
+       strftime('%m', date) AS month
+  FROM Costs
+ WHERE Costs.user_id = 1 AND 
+        CAST(strftime('%m', date) as int) = 10 AND 
+        CAST(strftime('%d', date) as int) = 10;
+'''
     cursor.execute(query)
     row = cursor.fetchall()
     with open('costs.csv', 'w', newline='') as fp:
