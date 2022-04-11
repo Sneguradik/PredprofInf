@@ -1,0 +1,29 @@
+<Extra>:
+    ScrollView:
+        do_scroll_y: True
+        size: self.size
+        GridLayout:
+            spacing: 20
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height 
+            padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+            BoxLayout:
+                Label:
+                    text: 'Курс валют к Рублю'
+            BoxLayout:
+                Button:
+                    text: 'Экспорт'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: None
+        height: 40
+        rgb: C('#212121')
+        BoxLayout:
+            Button:
+                text: 'Главная'
+                on_press: root.toTheMain()
+            Button:
+                text: 'Дополнительно'
+                on_press: root.toTheExtra()

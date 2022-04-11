@@ -1,0 +1,51 @@
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
+<Login>:
+    BoxLayout:
+        id: login_layout
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 20
+
+        Label:
+            text: '  Money\nManager'
+            font_size: 32
+            color: 'yellow'
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Label:
+                text: 'Login'
+                font_size: 18
+                halign: 'left'
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: login
+                multiline:False
+                font_size: 28
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Password'
+                halign: 'left'
+                font_size: 18
+                text_size: root.width-20, 20    
+
+            TextInput:
+                id: password
+                multiline:False
+                password:True
+                font_size: 28
+        Button:
+            size_hint_y: None
+            height: 20
+            text: 'Еще нет аккаунта? Регистрация'
+            background_color: 0, 0, 0, 0
+            on_press: root.toTheReg()
+        Button:
+            text: 'Login!'
+            font_size: 24
+            on_press: root.do_login(login.text, password.text)

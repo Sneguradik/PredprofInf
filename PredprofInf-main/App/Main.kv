@@ -1,0 +1,100 @@
+#: import C kivy.utils.get_color_from_hex
+#:include MyWidget.kv
+<Main>:
+    ScrollView:
+        do_scroll_y: True
+        size: self.size
+        GridLayout:
+            spacing: 20
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height 
+            padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+            BoxLayout:
+                
+                size_hint_y: None
+                height: 60
+                
+                BoxLayout:
+                    size_hint:None,None
+                    spacing: 5
+                    Image:
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout:
+                    size_hint:None,None 
+                    spacing: 5                   
+                    MainLabelGray:
+                        text: root.Username
+                        size_hint: None,None
+                        size: root.width*0.12,50
+                BoxLayout: 
+                    size_hint:None,None
+                    spacing: 5             
+                    Label:
+                        text: 'Текущая валюта' + root.Currency
+                        size_hint: None,None
+                        size: root.width*0.47,50
+                                         
+            BoxLayout:
+                size_hint_y: None
+                orientaeion: 'vertical'
+                height:40
+                padding: 
+                
+                
+                SearchGray:
+                
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                spacing: 10
+                ButtonGray2:
+                    text: 'Доходы за ' + root.Perriod
+                    
+                ButtonGray2:
+                    text: 'Расходы за ' + root.Perriod
+                    on_press:
+                        print('hi')
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 60
+                ButtonGray2:
+                    text: 'Текущий баланс : ' + root.strBalance + ' ' + root.Currency
+                    
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                spacing: 10
+                MainLabelGray2:
+                    font_size: 15
+                    text: 'Последние операции'
+                    
+                ButtonGray:
+                    text: 'Все операции'
+                    on_press: root.toTheAll()
+                    
+            BoxLayout:
+                size_hint_y: None
+                orientation: 'vertical'
+                size_y: 50
+                spacing: 10
+                height: 40
+                OperationCard:
+                    text: root.operation + root.space + root.cost
+                    on_press: root.toTheOpMenu()
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: None
+        height: 60
+        rgb: C('#212121')
+        BoxLayout:
+            Button:
+                text: 'Главная'
+                on_press: root.toTheMain()
+            Button:
+                text: 'Дополнительно'
+                on_press: root.toTheExtra()
+        
