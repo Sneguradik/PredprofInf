@@ -1,11 +1,11 @@
 #: import C kivy.utils.get_color_from_hex
 #:include MyWidget.kv
-<AllTransactions>:
+<All>:
     BoxLayout:
         orientation: 'vertical'
         AnchorLayout:
             anchor_x: 'center'
-            anchor_y: 'bottom'
+            anchor_y: 'top'
             size_hint_y: None
             height: 50
             padding: 20
@@ -13,9 +13,12 @@
                 Button:
                     background_color: 'black'
                     text: 'На главную <'
-                    on_press: 
+                    on_press: root.toTheMain()
                 Label:
                     text: 'Все операции'
+                Label:
+                    text:
+
         ScrollView:
             do_scroll_y: True
             size: self.size
@@ -26,9 +29,13 @@
                 height: self.minimum_height 
                 padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
                 SearchGray:
+                    size_hint: None, None
+                    height: 40
+                    multiline: False
+                    text: 'Поиск'
+                    color: 1, 0, 1, 1
+                    width: root.width*0.9
                 BoxLayout:
-                    size_hint_y:None
-                    size_y:30     
                     Label:
                         text: 'Сортировать по:'
                     Label:
@@ -36,41 +43,126 @@
                     Label:
                         text: 'Категории <' #тут надо сделать стрелочку вниз и выпадающий список
                 BoxLayout:
-                    orientaeion: 'vertical' 
-                    spacing: 20 
+                    Label:
+                        text: root.date + root.month
+                BoxLayout:
+                    size_hint_y: None
+                    orientation: 'vertical'
+                    height: 32 * root.amount2
+                    spacing: 10
                     BoxLayout:
-                        size_hint_y:None
-                        size_y:20 
-                        Label:
-                            text: 'date'
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
                     BoxLayout:
-                        orientation: 'vertical'
-                        spacing: 10
-                        BoxLayout:
-                            size_hint_y: None
-                            size_y: 30
-                            LabelGray:
-                                
-                                text: 'Молоко'
+                        MainLabelGray2:
+                            text: 'Молоко'
 
-                            LabelGray:
-                                
-                                text: '50 r'
-                        BoxLayout:
-                            
-                            LabelGray:
-                                text: 'Молоко'
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
 
-                            LabelGray:
-                                text: '50 r'
-                        BoxLayout:
-                            
-                            LabelGray:
-                                text: 'Молоко'
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
 
-                            LabelGray:
-                                text: '50 r'
-                
-                
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
 
-                    
+                        MainLabelGray2:
+                            text: '50 r'
+                BoxLayout:
+                    Label:
+                        text: root.date + root.month
+                BoxLayout:
+                    size_hint_y: None
+                    orientation: 'vertical'
+                    height: 32 * root.amount
+                    spacing: 10
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                BoxLayout:
+                    Label:
+                        text: root.date + root.month
+                BoxLayout:
+                    size_hint_y: None
+                    orientation: 'vertical'
+                    height: 32 * root.amount
+                    spacing: 10
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                BoxLayout:
+                    Label:
+                        text: root.date + root.month
+                BoxLayout:
+                    size_hint_y: None
+                    orientation: 'vertical'
+                    height: 32 * root.amount
+                    spacing: 10
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+                    BoxLayout:
+                        MainLabelGray2:
+                            text: 'Молоко'
+
+                        MainLabelGray2:
+                            text: '50 r'
+        Footer:
+            BoxLayout:
+                AnchorButton:
+                    text: 'Главная'
+                    on_press: root.toTheMain()
+                AnchorButton:
+                    text: 'Дополнительно'
+                    on_press: root.toTheExtra()
