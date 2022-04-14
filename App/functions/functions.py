@@ -63,6 +63,7 @@ def select_costs(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime
             query += f'''and amount between {amount_to} and {amount_from}'''
         cursor.execute(query)
         result = cursor.fetchall()
+        result = [dict(item) for item in result]
         return result
 
 
@@ -78,6 +79,7 @@ def select_income(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetim
             query += f'''and amount between {amount_to} and {amount_from}'''
         cursor.execute(query)
         result = cursor.fetchall()
+        result = [dict(item) for item in result]
         return result
 
 
@@ -124,4 +126,4 @@ def select_user(id):  # возвращает данные пользовател
         query = f'''select * from User where id = {id};'''
         cursor.execute(query)
         result = cursor.fetchone()
-        return result
+        return dict(result)
