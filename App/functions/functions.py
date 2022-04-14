@@ -77,12 +77,19 @@ def select_income(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetim
         return result
 
 
-def delete_income():
-    pass
+def delete_income():  # удаляет доход по id
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        db.row_factory = sqlite3.Row
+        cursor = db.cursor()
+        query = f'''delete from Income where id={id};'''
+        cursor.execute(query)
 
 
-def delete_costs():
-    pass
+def delete_costs():  # удаляет расход по id
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        cursor = db.cursor()
+        query = f'''delete from Costs where id={id};'''
+        cursor.execute(query)
 
 
 def new_category():
@@ -90,18 +97,27 @@ def new_category():
 
 
 def delete_category():
-    pass
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        cursor = db.cursor()
+        query = f'''delete from Category where id={id};'''
+        cursor.execute(query)
 
 
 def delete_user(id):  # удалаяет пользователя по id
-    pass
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        cursor = db.cursor()
+        query = f'''delete from User where id={id};'''
+        cursor.execute(query)
 
 
 def select_user(id):  # возвращает данные пользователя по id
     with sqlite3.connect('../../DataBase/db.db') as db:
-        cursor = db.cursor()
         db.row_factory = sqlite3.Row
+        cursor = db.cursor()
         query = f'''select * from User where id = {id};'''
         cursor.execute(query)
         result = cursor.fetchone()
         return result
+
+
+print(select_user(1))
