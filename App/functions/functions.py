@@ -103,7 +103,7 @@ def select_operations(user_id, n=20):
 
         answer = list()
         for i in range(len(result) // n + 1):
-            answer.append(result[i:i + n])
+            answer.append(result[i * n:i * n + n])
         return answer
 
 
