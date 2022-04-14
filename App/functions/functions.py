@@ -51,7 +51,7 @@ def set_user(id, name=None, password=None):  # поменять имя и/или
         cursor.execute(query)
 
 
-def select_costs(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime.date.today(), category_id=None, amount=None):  # выбирает расходы за определенный промежуток времени и/или по категории и/или размеру
+def select_costs(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime.date.today(), category_id=None, amount_from=None, amount_to=None):  # выбирает расходы за определенный промежуток времени и/или по категории и/или размеру
     with sqlite3.connect('../../DataBase/db.db') as db:
         db.row_factory = sqlite3.Row
         cursor = db.cursor()
@@ -59,19 +59,23 @@ def select_costs(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime
             query = f'''select * from Costs where user_id = {user_id} and category_id = {category_id} and date(Costs.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}');'''
         else:
             query = f'''select * from Costs where user_id = {user_id} and date(Costs.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}');'''
+        if amount_from:
+            query += f'''and amount between {amount_to} and {amount_from}'''
         cursor.execute(query)
         result = cursor.fetchall()
         return result
 
 
-def select_income(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime.date.today(), category_id=None, amount=None):  # выбирает доходы за определенный промежуток времени и/или по категории и/или размеру
+def select_income(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetime.date.today(), category_id=None, amount_from=None, amount_to=None):  # выбирает доходы за определенный промежуток времени и/или по категории и/или размеру
     with sqlite3.connect('../../DataBase/db.db') as db:
         db.row_factory = sqlite3.Row
         cursor = db.cursor()
         if category_id:
-            query = f'''select * from Income where user_id = {user_id} and category_id = {category_id} and date(Income.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}');'''
+            query = f'''select * from Income where user_id = {user_id} and category_id = {category_id} and date(Income.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}')'''
         else:
-            query = f'''select * from Income where user_id = {user_id} and date(Income.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}'); '''
+            query = f'''select * from Income where user_id = {user_id} and date(Income.date) between date('{date_from.strftime('%Y-%m-%d')}') and date('{date_to.strftime('%Y-%m-%d')}')'''
+        if amount_from:
+            query += f'''and amount between {amount_to} and {amount_from}'''
         cursor.execute(query)
         result = cursor.fetchall()
         return result
