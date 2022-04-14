@@ -92,8 +92,11 @@ def delete_costs():  # удаляет расход по id
         cursor.execute(query)
 
 
-def new_category():
-    pass
+def new_category(name, colour):
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        cursor = db.cursor()
+        query = f'''insert into Category(name, colour) values ('{name}', '{colour}')'''
+        cursor.execute(query)
 
 
 def delete_category():
@@ -118,6 +121,3 @@ def select_user(id):  # возвращает данные пользовател
         cursor.execute(query)
         result = cursor.fetchone()
         return result
-
-
-print(select_user(1))
