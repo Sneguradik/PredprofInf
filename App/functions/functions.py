@@ -83,6 +83,30 @@ def select_income(user_id, date_from=datetime.datetime(1, 1, 1), date_to=datetim
         return result
 
 
+def select_operations(user_id, n=20):
+    with sqlite3.connect('../../DataBase/db.db') as db:
+        db.row_factory = sqlite3.Row
+        cursor = db.cursor()
+
+        query = f'''select * from Costs where user_id = {user_id}'''
+        cursor.execute(query)
+        costs = [dict(item) for item in cursor.fetchall()]
+        for item in costs:
+            item.update({'type': 'cost'})
+        query = f'''select * from Income where user_id = {user_id}'''
+        cursor.execute(query)
+        income = [dict(item) for item in cursor.fetchall()]
+        for item in income:
+            item.update({'type': 'income'})
+        format = '%Y-%m-%d'
+        result = sorted((costs + income), key=lambda item: datetime.datetime.strptime(item['date'], format))
+
+        answer = list()
+        for i in range(len(result) // n + 1):
+            answer.append(result[i:i + n])
+        return answer
+
+
 def delete_income():  # удаляет доход по id
     with sqlite3.connect('../../DataBase/db.db') as db:
         db.row_factory = sqlite3.Row
