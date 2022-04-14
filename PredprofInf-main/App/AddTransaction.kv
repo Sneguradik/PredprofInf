@@ -1,8 +1,8 @@
 #: import C kivy.utils.get_color_from_hex
 #:include MyWidget.kv
-
-<OpMenu>:
-    orientation: 'vertical'
+<Add>:
+    BoxLayout:
+        orientation: 'vertical'
         spacing: 20
         #size_y: 100
         AnchorLayout:
@@ -18,7 +18,7 @@
                     text: 'На главную <'
                     on_press: root.toTheMain()
                 Label:
-                    text: 
+                    text: ''
                 Label:
                     text:
         GridLayout:
@@ -30,6 +30,12 @@
                 height: 20
                 SearchGray:
 
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+                OperationCard:
+                    text: root.operation + root.space + root.cost
             GridLayout:
                 size_hint_y: None
                 height: 50
@@ -48,20 +54,3 @@
                 MainButtonYellow:
                     text: 'Сохранить изменения'
 
-
-<PnP2>:
-    Button:
-        text: "Passwords aren't equal. Back to reg"
-        on_press: root.toTheReg()
-
-
-
-                    
-                    
-                
-                
-
-                
-                    
-
-    

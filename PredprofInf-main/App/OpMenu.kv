@@ -1,0 +1,48 @@
+<OpMenu>:
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: 50
+            padding: 20
+            
+            BoxLayout:
+                Button:
+                    background_color: 'black'
+                    text: 'На главную <'
+                    on_press: root.toTheMain()
+                Label:
+                    text: ''
+                Label:
+                    text:
+        ScrollView:
+            do_scroll_y: False
+            size: self.size
+        
+            GridLayout:
+                spacing: 20
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height 
+                padding: [root.width*0.1/2, 0 , root.width*0.1/2, 0]
+                InputGray:
+
+                GridLayout:
+                    size_hint_y: None
+                    height: 50
+                    
+                    cols: 2
+                    spacing: 10
+                    MainButtonRed:
+                        text: 'Удалить'
+                        
+                    MainButtonYellow:
+                        text: 'Сохранить изменения'
+                BoxLayout:
+                    size_hint_y: None
+                    height: 50
+                    
+                    MainButtonYellow:
+                        text: 'Сохранить изменения'
